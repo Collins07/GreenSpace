@@ -7,3 +7,6 @@ def index(request):
 def add_trees(request):
     return render(request, 'reforest/add_trees.html')
 
+def home(request):
+    return render(request, 'reforest/home.html')
+
