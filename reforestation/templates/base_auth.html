@@ -36,9 +36,27 @@
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
   </head>
   <body>
+    
+
+<div class="container-fluid">
+  <div class="row">
+ 
+
+    <main class="col-md-12">
+
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
           {% block content %}
 
           {% endblock %}
+
+        </div>
+        <div class="col-md-3"></div>
+        
+
+    </main>
+  </div>
+</div>
 
      <script src="{% static 'js/main.js' %}"></script>
     <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
