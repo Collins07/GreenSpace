@@ -2,7 +2,22 @@ const usernameField = document.querySelector('#usernameField');
 const feedbackArea = document.querySelector('.invalid_feedback');
 const emailField = document.querySelector('#emailField');
 const emailfeedbackArea = document.querySelector('.emailfeedbackArea');
+const passwordField = document.querySelector('#passwordField');
 const usernameSuccessOutput = document.querySelector('.usernameSuccessOutput');
+const showPasswordToogle = document.querySelector('.showPasswordToogle');
+
+const handleToggleInput=(e)=>{
+    if(showPasswordToogle.textContent === "SHOW"){
+        showPasswordToogle.textContent = "HIDE";
+
+        passwordField.setAttribute("type", "text");
+    } else{
+        showPasswordToogle.textContent = "SHOW";
+        passwordField.setAttribute("type", "password");
+    } 
+};
+
+showPasswordToogle.addEventListener("click", handleToggleInput)
 
 
 emailField.addEventListener('keyup', (e)=>{
@@ -39,7 +54,10 @@ usernameField.addEventListener("keyup", (e) => {
     console.log('77777', 77777);
 
     const usernameVal = e.target.value;
-    usernameSuccessOutput.textContent= 'Checking ${usernameVal}'
+
+    usernameSuccessOutput.style.display = "block";
+
+    usernameSuccessOutput.textContent= 'checking ' + (usernameVal )
 
     usernameField.classList.remove("is-invalid");
     feedbackArea.style.display = "none";
