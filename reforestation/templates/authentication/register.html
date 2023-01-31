@@ -13,6 +13,10 @@
                 <h3 class="mt-4">Register</h3>
 
                 <form class="px-4" action="" method="post">
+                    {% csrf_token %}
+
+                    {% include 'partials/_messages.html' %}
+
                     <div class="form-group mt-3">
                         <input class="form-control form-control-sm" type="text" name="username" id="usernameField" placeholder="Username">
                     </div>
