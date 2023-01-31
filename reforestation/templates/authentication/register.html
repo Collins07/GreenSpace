@@ -12,13 +12,13 @@
             <div class="card-title">
                 <h3 class="mt-4">Register</h3>
 
-                <form class="px-4" action="" method="post">
+                <form class="px-4" action="{% url 'register' %}" method="post">
                     {% csrf_token %}
 
                     {% include 'partials/_messages.html' %}
 
                     <div class="form-group mt-3">
-                        <input class="form-control form-control-sm" type="text" name="username" id="usernameField" placeholder="Username">
+                        <input class="form-control form-control-sm" type="text" name="username" id="usernameField" placeholder="Username" value="{{fieldValue.username}}">
                     </div>
                     <div class="invalid-feedback invalid_feedback" style="display: none;">
                         <p></p>
@@ -27,7 +27,7 @@
 
 
                     <div class="form-group mt-3">
-                        <input class="form-control form-control-sm" type="email" name="email" id="emailField" placeholder="Email">
+                        <input class="form-control form-control-sm" type="email" name="email" id="emailField" placeholder="Email" value="{{fieldValue.email}}">
                     </div>
                     <div class="invalid-feedback emailfeedbackArea" style="display: none;">
                         <p></p>
@@ -39,7 +39,7 @@
                          <small class="float-right showPasswordToogle">SHOW</small> 
                          <!-- CURSOR POINTER -->
                     </div>
-                    <input  type="submit" value="Register" class="btn btn-block btn-primary mt-5">                                      
+                    <input  type="submit" value="Register" class="submit-btn btn btn-block btn-primary mt-5">                                      
                 </form>
             </div>
         </div>
