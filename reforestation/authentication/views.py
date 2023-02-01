@@ -14,7 +14,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_bytes, force_str, DjangoUnicodeDecodeError
 from django.conf import settings
-from .utils import token_generator
+from .utils import account_activation_token
 
 
 # Create your views here.
@@ -79,7 +79,7 @@ class RegistrationView(View):
                 # relative url to verification
                 uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
                 domain = get_current_site(request).domain
-                link = reverse('activate', kwargs={'uidb64':uidb64, 'token': token_generator.make_token(user)})
+                link = reverse('activate', kwargs={'uidb64':uidb64, 'token': account_activation_token.make_token(user)})
 
                 activate_url = 'http://'+ domain+link
 
@@ -109,4 +109,28 @@ class RegistrationView(View):
 
 class VerificationView(View):
     def get(self, request, uidb64, token):
-        return redirect("login")
+
+        try:
+            id = force_str(urlsafe_base64_decode(uidb64))
+            user = User.objects.get(pk=id)
+
+            if not account_activation_token.check_token(user, token):
+                return redirect('login' + 'messages' + 'User already activated')
+
+            if user.is_active:
+                return redirect('login')
+            user.is_active = True
+            user.save()
+
+            messages.success(request, 'Account activated successfully')
+            return redirect('login')
+        except Exception as ex:
+            pass
+            
+       
+        return redirect('login')
+
+
+class LoginView(View):
+    def get(self, request):
+        return render(request, 'authentication/login.html')
