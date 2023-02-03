@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Add trees</h2> 
+
+  <div class="row mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'index' %}">Trees</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Add trees</li>
+        </ol>
+      </nav>
+  </div>
+
+  <form action="{% url 'index' %}" method="post"></form>
 
 {% endblock %}

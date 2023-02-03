@@ -3,13 +3,19 @@
 
 {% block content %}
 
-
-<h1>Activity List</h1>
-
-<ul class="list-group">
-    <li class="list-group-item">Planted trees</li>
-    <li class="list-group-item">Replanted trees</li>
-    <li class="list-group-item">Total trees</li>
-</ul>
+<div class="row mt-4">
+    <div class="col-md-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="">Trees</a></li>
+              <li class="breadcrumb-item active" aria-current="page">All trees</li>
+            </ol>
+          </nav>
+     </div>
+    
+     <div class="col-md-2">
+        <a class="btn btn-success" href="{% url 'add_trees' %}">Add Trees</a>
+     </div>
+</div>
 
 {% endblock %}

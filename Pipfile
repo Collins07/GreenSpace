@@ -9,6 +9,7 @@ psycopg2 = "*"
 django-environ = "*"
 validate-email = "*"
 six = "*"
+pyright = "*"
 
 [dev-packages]
 
