@@ -39,6 +39,9 @@
                 <td>{{reforest.description}}</td>
                 <td>{{reforest.category}}</td>
                 <td>{{reforest.date}}</td>
+                
+
+                <td><a href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
             </tr>
             {% endfor %}
         </tbody>

@@ -1,7 +1,8 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 from .models import Category, Reforest
 from django.contrib import messages
+
 
 # Create your views here.
 @login_required(login_url='/authentication/login')
@@ -51,4 +52,23 @@ def add_trees(request):
 
 def home(request):
     return render(request, 'reforest/home.html')
+
+
+
+@login_required
+def reforest_edit(request, id):
+    reforest = Reforest.objects.get(pk=id)
+    categories = Category.objects.all()
+
+    context = {
+        'reforest': reforest,
+        'values': reforest,
+        'categories': categories
+    }
+    if request.method == 'GET':
+        
+        return render(request, 'reforest/edit_trees.html', context)
+    else:
+        messages.info(request, 'Handling post form')
+        return render (request, 'reforet/edit_tress.html')
 
