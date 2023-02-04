@@ -13,9 +13,37 @@
           </nav>
      </div>
     
-     <div class="col-md-2">
+     <div class="col-md-2 mb-3">
         <a class="btn btn-success" href="{% url 'add_trees' %}">Add Trees</a>
      </div>
+</div>
+
+{% include 'partials/_messages.html' %}
+
+<div class="container">
+    {% if reforest.count %}
+    <table class="table table-stripped table-hover ">
+        <thead>
+            <tr>
+               <th>Trees planted</th>
+               <th>Name</th>
+               <th>Category</th>
+               <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for reforest in reforest %}
+            <tr>
+                <td>{{reforest.trees_planted}}</td>
+                <td>{{reforest.description}}</td>
+                <td>{{reforest.category}}</td>
+                <td>{{reforest.date}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 </div>
 
 {% endblock %}
