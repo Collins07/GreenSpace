@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required,permission_required
 from .models import Category, Reforest
@@ -68,7 +69,31 @@ def reforest_edit(request, id):
     if request.method == 'GET':
         
         return render(request, 'reforest/edit_trees.html', context)
-    else:
-        messages.info(request, 'Handling post form')
-        return render (request, 'reforet/edit_tress.html')
+    if request.method == 'POST':
+        trees_planted = request.POST['trees_planted']
 
+        if not trees_planted:
+            messages.error(request,'Number of trees planted required !!!')
+            return render(request, 'reforest/edit_trees.html', context)
+        description = request.POST['description']
+        date = request.POST['date']
+        category = request.POST['category']
+        
+    if request.method == 'POST':
+        description = request.POST['description']
+
+        if not description:
+            messages.error(request,' The name of your group is required !!!')
+            return render(request, 'reforest/edit_trees.html', context)
+        
+
+        reforest.owner=request.user
+        reforest.trees_planted=trees_planted
+        reforest.description=description
+        reforest.date=date
+        reforest.category=category
+
+        reforest.save()
+        messages.success(request, 'Your data has been updated successfully')
+
+        return redirect('index')
