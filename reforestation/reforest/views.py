@@ -97,3 +97,11 @@ def reforest_edit(request, id):
         messages.success(request, 'Your data has been updated successfully')
 
         return redirect('index')
+
+
+
+def reforest_delete(request,id):
+    reforest = Reforest.objects.get(pk=id)
+    reforest.delete()
+    messages.error(request, 'Your data has been deleted')
+    return redirect('index')
