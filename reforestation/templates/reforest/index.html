@@ -14,7 +14,7 @@
      </div>
     
      <div class="col-md-2 mb-3">
-        <a class="btn btn-success" href="{% url 'add_trees' %}">Add Trees</a>
+        <a id="add-trees" class="btn btn-success" href="{% url 'add_trees' %}">Add Trees</a>
      </div>
 </div>
 
@@ -33,7 +33,7 @@
         </thead>
 
         <tbody>
-            {% for reforest in reforest %}
+            {% for reforest in page_obj %}
             <tr>
                 <td>{{reforest.trees_planted}}</td>
                 <td>{{reforest.description}}</td>
@@ -41,11 +41,28 @@
                 <td>{{reforest.date}}</td>
                 
 
-                <td><a href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
+                <td><a id="edit-trees" href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+
+    <div class="">
+        Showing page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
+    </div>
+
+    <ul class="pagination align-right float-right mr-auto">
+        {% if page_obj.has_previous %}
+        <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a href="?page=1" class="page-link"> &laquo; 1</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+         {% endif %}
+        
+         {% if page_obj.has.next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator_num_pages }}">{{ page_obj.paginator_num_pages }} &raquo;</a></li>
+        {% endif %}
+    </ul>
     {% endif %}
 </div>
 

@@ -49,3 +49,15 @@
     -webkit-overflow-scrolling: touch;
   }
 
+  #add-trees{
+    border-radius: 1px;
+  }
+  #edit-trees{
+    border-radius: 4px;
+  }
+  #sign-out{
+    background-color: rgb(2, 114, 2);
+    border: none;
+    color: white;
+    font-weight: bold;
+  }

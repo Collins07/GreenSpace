@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required,permission_required
 from .models import Category, Reforest
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -10,8 +11,13 @@ from django.contrib import messages
 def index(request):
     categories = Category.objects.all()
     reforest = Reforest.objects.all()
+
+    paginator=Paginator(reforest, 2)
+    page_number = request.GET.get('page')
+    page_obj= Paginator.get_page(paginator,page_number)
     context = {
         'reforest': reforest,
+        'page_obj': page_obj,
 
     }
     return render(request, 'reforest/index.html', context)

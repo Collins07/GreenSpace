@@ -48,7 +48,7 @@
 
       <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <input class="text px-3" type="submit" value="Sign Out">
+        <input id="sign-out" class="text px-3" type="submit" value="Sign Out">
       </form>
 
     </div>
