@@ -10,10 +10,10 @@ import json
 def search_reforest(request):
     if request.method == 'POST':
       search_str=json.loads(request.body).get('searchText')
-      reforests = Reforest.filter(
-          trees_planted__starts_with=search_str,owner=request.user) | Reforest.filter(
-          date__starts_with=search_str,owner=request.user) | Reforest.filter(
-          description__icontains=search_str,owner=request.user) | Reforest.filter(
+      reforests = Reforest.objects.filter(
+          trees_planted__istartswith=search_str,owner=request.user) | Reforest.objects.filter(
+          date__istartswith=search_str,owner=request.user) | Reforest.objects.filter(
+          description__icontains=search_str,owner=request.user) | Reforest.objects.filter(
           trees_planted__icontains=search_str,owner=request.user)
       data = reforests.values()
       return JsonResponse(list(data), safe=False)
@@ -24,7 +24,7 @@ def index(request):
     categories = Category.objects.all()
     reforest = Reforest.objects.all()
 
-    paginator=Paginator(reforest, 2)
+    paginator=Paginator(reforest, 4)
     page_number = request.GET.get('page')
     page_obj= Paginator.get_page(paginator,page_number)
     context = {
