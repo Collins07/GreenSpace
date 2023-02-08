@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 
 {% block content %}
 
@@ -22,6 +24,19 @@
 
 <div class="container">
     {% if reforest.count %}
+
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+
+            <div class="form-group mb-3 ">
+                <input type="text" id="searchField" class="form-control" placeholder="Search">
+            </div>
+
+        </div>
+    </div>
+
+
     <table class="table table-stripped table-hover ">
         <thead>
             <tr>
@@ -61,5 +76,7 @@
     </ul>
     {% endif %}
 </div>
+
+<script src="{% static 'js/search.js' %}"></script>
 
 {% endblock %}
