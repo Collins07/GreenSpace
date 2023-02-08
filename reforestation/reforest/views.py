@@ -1,12 +1,24 @@
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required,permission_required
 from .models import Category, Reforest
 from django.contrib import messages
 from django.core.paginator import Paginator
-
+import json
 
 # Create your views here.
+def search_reforest(request):
+    if request.method == 'POST':
+      search_str=json.loads(request.body).get('searchText')
+      reforests = Reforest.filter(
+          trees_planted__starts_with=search_str,owner=request.user) | Reforest.filter(
+          date__starts_with=search_str,owner=request.user) | Reforest.filter(
+          description__icontains=search_str,owner=request.user) | Reforest.filter(
+          trees_planted__icontains=search_str,owner=request.user)
+      data = reforests.values()
+      return JsonResponse(list(data), safe=False)
+
+
 @login_required(login_url='/authentication/login')
 def index(request):
     categories = Category.objects.all()
