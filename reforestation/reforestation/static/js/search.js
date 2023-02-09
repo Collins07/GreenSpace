@@ -15,6 +15,7 @@ searchField.addEventListener("keyup", (e) =>{
 
   if(searchValue.trim().length>0){
     paginationTable.style.display = "none"
+    tbody.innerHTML = "";
    
 
     fetch("/search-reforest",{
@@ -30,19 +31,21 @@ searchField.addEventListener("keyup", (e) =>{
 
         tableOutput.style.display = "block"
 
+        console.log("data.length", data.length);
+
         if (data.length===0){
             tableOutput.innerHTML = 'No results found !!'
         }
         else{
             data.forEach((item) => {
 
-                tbody.innerHTML =  `
+                tbody.innerHTML +=  `
                 
                 <tr> 
-                <td>$(item.trees_planted)</td>  
-                <td>$(item.trees_description)</td>  
-                <td>$(item.category)</td> 
-                <td>$(item.date)</td> 
+                <td>${item.trees_planted}</td>  
+                <td>${item.description}</td>  
+                <td>${item.category}</td> 
+                <td>${item.date}</td> 
                 </tr> 
                 
                 `;
