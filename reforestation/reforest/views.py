@@ -14,7 +14,7 @@ def search_reforest(request):
           trees_planted__istartswith=search_str,owner=request.user) | Reforest.objects.filter(
           date__istartswith=search_str,owner=request.user) | Reforest.objects.filter(
           description__icontains=search_str,owner=request.user) | Reforest.objects.filter(
-          trees_planted__icontains=search_str,owner=request.user)
+          category__icontains=search_str,owner=request.user)
       data = reforests.values()
       return JsonResponse(list(data), safe=False)
 

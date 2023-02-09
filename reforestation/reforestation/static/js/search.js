@@ -33,7 +33,7 @@ searchField.addEventListener("keyup", (e) =>{
 
         console.log("data.length", data.length);
 
-        if (data.length===0){
+        if (data===0){
             tableOutput.innerHTML = 'No results found !!'
         }
         else{
