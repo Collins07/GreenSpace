@@ -34,8 +34,7 @@ def index(request):
     }
     return render(request, 'reforest/index.html', context)
 
-
-
+@login_required
 def add_trees(request):
     categories = Category.objects.all()
     context = {

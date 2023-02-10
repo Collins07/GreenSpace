@@ -16,14 +16,14 @@
      </div>
     
      <div class="col-md-2 mb-3">
-        <a id="add-trees" class="btn btn-success" href="{% url 'add_trees' %}">Add Trees</a>
+        <a id="add-trees" class="btn btn-success" href="{% url 'add_forest' %}">Add Trees</a>
      </div>
 </div>
 
 {% include 'partials/_messages.html' %}
 
-<div class="container">
-    {% if reforest.count %}
+<!-- <div class="container">
+    {% if forest.count %}
 
     <div class="row">
         <div class="col-md-8"></div>
@@ -41,9 +41,9 @@
         <table class="table table-stripped table-hover ">
             <thead>
                 <tr>
-                   <th>Trees planted</th>
+                   <th>Trees replaced</th>
                    <th>Name</th>
-                   <th>Category</th>
+                   <th>Reason</th>
                    <th>Date</th>
                 </tr>
             </thead>
@@ -104,8 +104,8 @@
       </div>
     
     {% endif %}
-</div>
+</div> -->
 
-<script src="{% static 'js/search.js' %}"></script>
+<script src="{% static 'js/searchForest.js' %}"></script>
 
 {% endblock %}

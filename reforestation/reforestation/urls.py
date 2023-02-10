@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('', include ('reforest.urls')),
     path('authentication/', include('authentication.urls')),
+    path('forests/', include('forests.urls')),
     path('admin/', admin.site.urls),
 ]
