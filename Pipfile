@@ -10,6 +10,7 @@ django-environ = "*"
 validate-email = "*"
 six = "*"
 pyright = "*"
+pillow = "*"
 
 [dev-packages]
 
