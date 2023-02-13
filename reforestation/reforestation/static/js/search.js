@@ -21,7 +21,7 @@ searchField.addEventListener("keyup", (e) =>{
     fetch("/search-reforest",{
         body: JSON.stringify({searchText: searchValue}),
         method:"POST",
-
+  
     })
     .then(res=>res.json())
     .then(data=>{

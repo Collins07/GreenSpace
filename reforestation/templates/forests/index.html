@@ -22,7 +22,7 @@
 
 {% include 'partials/_messages.html' %}
 
-<!-- <div class="container">
+ <div class="container">
     {% if forest.count %}
 
     <div class="row">
@@ -30,7 +30,7 @@
         <div class="col-md-4">
 
             <div class="form-group mb-3 ">
-                <input type="text" id="searchField" class="form-control" placeholder="Search">
+                <input type="text" id="searchField2" class="form-control" placeholder="Search">
             </div>
 
         </div>
@@ -49,15 +49,15 @@
             </thead>
     
             <tbody>
-                {% for reforest in page_obj %}
+                {% for forest in page_obj %}
                 <tr>
-                    <td>{{reforest.trees_planted}}</td>
-                    <td>{{reforest.description}}</td>
-                    <td>{{reforest.category}}</td>
-                    <td>{{reforest.date}}</td>
+                    <td>{{forest.trees_planted}}</td>
+                    <td>{{forest.description}}</td>
+                    <td>{{forest.reason}}</td>
+                    <td>{{forest.date}}</td>
                     
     
-                    <td><a id="edit-trees" href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
+                    <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -68,9 +68,9 @@
         <table class="table table-stripped table-hover ">
             <thead>
                 <tr>
-                   <th>Trees planted</th>
+                   <th>Trees replanted</th>
                    <th>Name</th>
-                   <th>Category</th>
+                   <th>Reason</th>
                    <th>Date</th>
                 </tr>
             </thead>
@@ -104,7 +104,7 @@
       </div>
     
     {% endif %}
-</div> -->
+</div>
 
 <script src="{% static 'js/searchForest.js' %}"></script>
 

@@ -61,3 +61,52 @@ def add_forest(request):
         return redirect('forest')
 
     return render(request, 'forests/add_forest.html', context)
+
+
+
+def forest_edit(request, id):
+    forest = Forest.objects.get(pk=id)
+    reasons = Reason.objects.all()
+
+    context = {
+        'forest': forest,
+        'values': forest,
+        'reasons': reasons
+    }
+    if request.method == 'GET':
+        
+        return render(request, 'forests/edit_forest.html', context)
+    if request.method == 'POST':
+        trees_planted = request.POST['trees_planted']
+
+        if not trees_planted:
+            messages.error(request,'Number of trees replaced required !!!')
+            return render(request, 'forests/edit_forest.html', context)
+        description = request.POST['description']
+        date = request.POST['date']
+ 
+        
+    if request.method == 'POST':
+        description = request.POST['description']
+
+        if not description:
+            messages.error(request,' The name of your group is required !!!')
+            return render(request, 'forests/edit_forest.html', context)
+        
+
+        forest.trees_planted=trees_planted
+        forest.description=description
+        forest.date=date
+
+        forest.save()
+        messages.success(request, 'Your data has been updated successfully')
+
+        return redirect('forest')
+
+
+@login_required(login_url='/authentication/login')
+def forest_delete(request,id):
+    forest = Forest.objects.get(pk=id)
+    forest.delete()
+    messages.error(request, 'Your data has been deleted')
+    return redirect('forest')
