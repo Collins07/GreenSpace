@@ -11,6 +11,8 @@ validate-email = "*"
 six = "*"
 pyright = "*"
 pillow = "*"
+django-bootstrap-v5 = "*"
+cloudinary = "*"
 
 [dev-packages]
 

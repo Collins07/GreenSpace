@@ -1,4 +1,4 @@
-const searchField = document.querySelector("#searchField");
+let searchField = document.querySelector("#searchField");
 
 const appTable = document.querySelector(".app-table");
 
