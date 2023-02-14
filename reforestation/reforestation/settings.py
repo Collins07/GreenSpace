@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'reforest',
     'forests',
     'farmers',
+    'bootstrap5',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [

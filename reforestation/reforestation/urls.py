@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+
     path('', include ('reforest.urls')),
     path('authentication/', include('authentication.urls')),
     path('farmers/', include('farmers.urls')),

@@ -13,6 +13,7 @@ pyright = "*"
 pillow = "*"
 django-bootstrap-v5 = "*"
 cloudinary = "*"
+django-bootstrap5 = "*"
 
 [dev-packages]
 
