@@ -147,6 +147,9 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # email send
 EMAIL_HOST = "smtp.gmail.com"
