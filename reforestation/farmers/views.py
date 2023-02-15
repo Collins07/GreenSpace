@@ -58,7 +58,7 @@ def profile(request, username):
 
     }
 
-    return render (request, 'profile.html', params)
+    return render (request, 'farmers/profile.html', params)
    
 
         
@@ -76,7 +76,7 @@ def new_status(request, username):
         return redirect('farmer')
     else:
         form = PostForm()
-    return render(request, 'new_status.html', {"form": form})
+    return render(request, 'farmers/new_status.html', {"form": form})
 
 
 
@@ -105,7 +105,7 @@ def user_profile(request, username):
 
     }
 
-    return render(request, 'user_profile.html', params)   
+    return render(request, 'farmers/user_profile.html', params)   
 
 
 @login_required(login_url='/authentication/login')
@@ -132,7 +132,7 @@ def post_comment(request, id):
         'total_likes': image.total_likes()
 
     }
-    return render(request, 'single_post.html', params)
+    return render(request, 'farmers/single_post.html', params)
 
 
 
@@ -152,7 +152,7 @@ def search_profile(request):
         return render(request, 'results.html', params)
     else:
         message = "You haven't searched for any image category"
-    return render(request, 'results.html', {'message': message})
+    return render(request, 'farmers/results.html', {'message': message})
 
     
 def unfollow(request, to_unfollow):
