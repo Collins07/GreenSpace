@@ -14,8 +14,8 @@
                     <div class="col-md-6 mt-3">
                         <div class="media-body">
                             <div class="account-heading"><span class="mr-3 text-secondary username">{{ user.username }}</span>
-                                <a class="btn btn-sm btn-outline-secondary mr-3" data-toggle="modal" data-target=".bd-example-modal-md"><strong>Edit Profile</strong></a>
-                                <a class="mt-3" data-toggle="modal" data-target="#ModalCenter"><i class="fa fa-cog mt-3" id="cog"></i></a>
+                                <a class="btn btn-sm btn-outline-secondary mr-3" data-bs-toggle="modal" data-bs-target=".bd-example-modal-md"><strong>Edit Profile</strong></a>
+                                <a class="mt-3" data-bs-toggle="modal" data-bs-target="#ModalCenter"><i class="fa fa-cog mt-3" id="cog"></i></a>
                             </div>
 
                             <div class="post-details mt-3 mb-3 post">
@@ -38,9 +38,9 @@
                         <div class="modal-body">
                             <a class="D-block mx-auto" href="">Change Password</a>
                             <hr>
-                            <a class="D-block mx-auto" href="{% url 'logout' %}">Log Out</a>
+                            <a class="D-block mx-auto" href="#">Log Out</a>
                             <hr>
-                            <a class="D-block mx-auto" href="" data-dismiss="modal">Close</a>
+                            <a class="D-block mx-auto" href="" data-bs-dismiss="modal">Close</a>
                         </div>
     
                     </div>

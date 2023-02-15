@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Image,Profile,Comment,Follow
-from .forms import PostForm, CommentForm
+from .forms import PostForm, UpdateUserForm, UpdateUserProfileForm, CommentForm
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.views.generic.detail import DetailView
 
 # Create your views here.
+@login_required(login_url='/authentication/login')
 def farmer(request):
     images = Image.objects.all()
     users = User.objects.exclude(id=request.user.id)
@@ -30,11 +31,39 @@ def farmer(request):
     }
     
     return render(request, 'farmers/index.html', params)
+
+@login_required(login_url='/authentication/login')
+def profile(request, username):
+    #current_user = request.user
+   
+    #images = Image.objects.all().filter(profile_id=current_user.id)
+    images = request.user.posts.all()
+
+  
+    if request.method == 'POST':
+        #user_form = UpdateUserForm(request.POST, instance=request.user)
+        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        #if user_form.is_valid() and prof_form.is_valid():
+            #user_form.save()
+        if prof_form.is_valid():    
+            prof_form.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        #user_form = UpdateUserForm(instance=request.user)
+        prof_form = UpdateUserProfileForm(instance=request.user.profile)
+    params = {
+        #'user_form': user_form,
+        'form': prof_form,
+        'images': images,
+
+    }
+
+    return render (request, 'profile.html', params)
    
 
         
 
-
+@login_required(login_url='/authentication/login')
 def new_status(request, username):
     current_user = request.user
     username = current_user.username
@@ -44,14 +73,14 @@ def new_status(request, username):
             image = form.save()
             image.user = request.user
             image.save()
-        return redirect('homePage')
+        return redirect('farmer')
     else:
         form = PostForm()
     return render(request, 'new_status.html', {"form": form})
 
 
 
-
+@login_required(login_url='/authentication/login')
 def user_profile(request, username):
     user_prof = get_object_or_404(User, username=username)
     if request.user == user_prof:
@@ -79,10 +108,10 @@ def user_profile(request, username):
     return render(request, 'user_profile.html', params)   
 
 
-
+@login_required(login_url='/authentication/login')
 def post_comment(request, id):
     image = get_object_or_404(Image, pk=id)
-    is_liked = False
+    is_liked =  False
     if image.likes.filter(id=request.user.id).exists():
         is_liked = True
 
@@ -109,7 +138,7 @@ def post_comment(request, id):
 
 
 
-
+@login_required(login_url='/authentication/login')
 def search_profile(request):
     if 'search_user' in request.GET and request.GET['search_user']:
         name = request.GET.get("search_user")
@@ -154,4 +183,4 @@ def single_image_like(request, id):
     image = Image.objects.get(id=id)
     image.likes = image.likes + 1
     image.save()
-    return redirect('homePage')    
+    return redirect('farmer')    
