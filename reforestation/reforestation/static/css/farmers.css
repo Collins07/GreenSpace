@@ -77,4 +77,7 @@ background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, F
     color: green;
     text-decoration-style: none;
 }
-
+.caption{
+    margin-left: 2%;
+    margin-bottom: 0;
+}

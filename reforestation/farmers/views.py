@@ -76,7 +76,8 @@ def new_status(request, username):
         return redirect('farmer')
     else:
         form = PostForm()
-    return render(request, 'farmers/new_status.html', {"form": form})
+     
+    return render(request, 'farmers/new_status.html', {"form": form}, {"username": username})
 
 
 
@@ -179,10 +180,10 @@ def like_post(request, id):
     image = Image.objects.get(id=id)
     image.likes = image.likes + 1
     image.save()
-    return redirect('index')
+    return redirect(request, 'index')
 
 def single_image_like(request, id):
     image = Image.objects.get(id=id)
     image.likes = image.likes + 1
     image.save()
-    return redirect('farmer')    
+    return redirect(request,'farmer') 
