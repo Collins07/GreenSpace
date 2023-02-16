@@ -8,9 +8,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-1"></div>
+
+                    {% for image in images %}
                     <div class="col-md-3">
-                        <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}">
+                        <img class="rounded-circle account-img" src="{{image.user.profile.profile_photo.url}}" width="200" height="200">
                     </div>
+                    {% endfor %}
+
                     <div class="col-md-6 mt-3">
                         <div class="media-body">
                             <div class="account-heading"><span class="mr-3 text-secondary username">{{ user.username }}</span>
@@ -62,7 +66,10 @@
         <hr class="mt-4">
         <div class="card-columns">
             {% for image in images %}
-                <div style="width: 300px;" class=" card">
+                <p class="ml-2"><strong>{{image.user.username|title}}</strong> {{image.caption}}</p>
+
+
+                <div style="width: 300px;" class="mb-4 card">
                     <div class="card-body">
                         <img src="{{image.image.url}}" alt="{{image.caption}}" class="card-img" width="300px" height="200px">
                         <p id="overlay"class="text"> 
@@ -72,11 +79,12 @@
     
                     </div>
                 </div>
-    
+
                 
-                            
+      
             {% endfor %}
                </div>
            </div>
         </div>
+        
 {% endblock %}
