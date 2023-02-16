@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
 from django.dispatch import receiver
@@ -72,7 +73,7 @@ class Image(models.Model):
         return self.comments.all()   
 
     def total_likes(self):
-        return self.likes.count()
+        return Image
 
      
 
@@ -83,7 +84,7 @@ class Image(models.Model):
 class Comment(models.Model):
     comment = models.TextField()
     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='comments')
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name='comments')
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):

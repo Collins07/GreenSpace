@@ -112,7 +112,8 @@ def user_profile(request, username):
 def post_comment(request, id):
     image = get_object_or_404(Image, pk=id)
     is_liked =  False
-    if image.likes.filter(id=request.user.id).exists():
+    if Image.objects.filter(id=request.user.id):
+        
         is_liked = True
 
     if request.method == 'POST':
@@ -122,6 +123,7 @@ def post_comment(request, id):
             savecomment.image = image
             savecomment.user = request.user
             savecomment.save()
+
             return HttpResponseRedirect(request.path_info)
     else:
         form = CommentForm()
