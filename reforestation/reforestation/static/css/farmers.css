@@ -81,3 +81,7 @@ background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, F
     margin-left: 2%;
     margin-bottom: 0;
 }
+.profilevisit{
+    height: 300px;
+    width: 300px;
+}
