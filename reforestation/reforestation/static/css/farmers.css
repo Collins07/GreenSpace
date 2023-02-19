@@ -85,3 +85,42 @@ background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, F
     height: 300px;
     width: 300px;
 }
+a{
+    text-decoration: none;
+}
+#profile-section{
+    display: flex;
+}
+#profile-caption{
+    margin-left: 3%;
+}
+.username{
+    font-weight: bold;
+    margin-right: 2%;
+    font-size: 20px;
+    color: black;
+}
+#cog{
+    font-size: 25px;
+    margin-left: 2%;
+    color: green;
+  
+}
+a{
+   text-decoration: none;
+}
+#single-post{
+    box-shadow:green 0px 13px 27px -5px, green 0px 8px 16px -8px;
+}
+.single-post-username{
+    font-weight: bold;
+    font-size: 18px;
+}
+.single-post-comment{
+    text-decoration: underline;
+    color: green;
+    font-weight: bold;
+}
+.main-post{
+    display: flex;
+}
