@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='business_profile')
     bio = models.TextField(blank=True)
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
 
@@ -12,7 +12,7 @@ class Profile(models.Model):
 
 
 class Post(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='business_posts')
     text = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
 
@@ -21,8 +21,8 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='business_comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='business_comments')
     text = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
 
@@ -31,16 +31,16 @@ class Comment(models.Model):
 
 
 class Like(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='business_likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='business_likes')
 
     def __str__(self):
         return f'{self.user.username} likes {self.post}'
 
 
 class Follow(models.Model):
-    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
-    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followers')
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='business_following')
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='business_followers')
 
     def __str__(self):
         return f'{self.follower.username} follows {self.following.username}'

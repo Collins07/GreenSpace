@@ -1,0 +1,37 @@
+{% extends 'base_business.html' %}
+{% load static %}
+
+{% load bootstrap5 %}
+
+
+
+
+
+{% block content %}
+
+<h2>User Profile</h2>
+<h3>{{ user.username }}</h3>
+<img src="{{ profile.image.url }}" alt="{{ user.username }}'s profile picture" width="200" height="200">
+<p>{{ profile.bio }}</p>
+
+{% if request.user == user %}
+  <a href="{% url 'profile_edit' user.username %}">Edit Profile</a>
+{% else %}
+  {% if following %}
+    <a href="{% url 'unfollow' user.username %}">Unfollow</a>
+  {% else %}
+    <a href="{% url 'follow' user.username %}">Follow</a>
+  {% endif %}
+{% endif %}
+
+<hr>
+
+<h3>{{ user.username }}'s Posts:</h3>
+{% for post in posts %}
+  <h4>{{ post.title }}</h4>
+  <p>{{ post.content }}</p>
+  <p>Posted on {{ post.date_posted }}</p>
+{% endfor %}
+
+{% endblock %}
+

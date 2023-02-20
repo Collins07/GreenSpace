@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.http import JsonResponse
+from django.views.generic import DetailView
 
 from .models import Profile, Post, Comment, Like
 from .forms import PostForm, CommentForm, ProfileForm
@@ -148,3 +149,16 @@ def post_like_ajax(request):
         like.delete()
         response = {'result': 'unliked'}
     return JsonResponse(response)
+
+
+class ProfileView(DetailView):
+    model = User
+    template_name = 'profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = get_object_or_404(User, username=self.kwargs['username'])
+        context['posts'] = user.posts.all().order_by('-date_posted')
+        context['profile'] = get_object_or_404(Profile, user=user)
+        context['following'] = self.request.user.profile.following.filter(user=user).exists() if self.request.user.is_authenticated else False
+        return context
