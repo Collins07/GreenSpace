@@ -51,12 +51,12 @@
     {% for image in images %}
     <div class="card mb-4">
         <div class="card-title">
-            <img  src="{{image.user.profile.profile_photo.url}}" style="border-radius: 50%;" class="rounded-circle border ml-5 mt-2  mr-3"
+            <img  src="{{image.user.profile.profile_photo.url}}" style="border-radius: 50%; margin-left: 2%;" class="rounded-circle border ml-5 mt-2  mr-3"
                  alt="" width="40" height="40">
             <a href="" class="mt-2 user"><strong class="usernamecolor">{{image.user.username|title}}</strong></a>
-            <div class="caption"><p><strong>{{image.user.username|title}}</strong>: {{image.caption}}</p></div>
+            <div class="caption"><p><strong></strong> {{image.caption}}</p></div>
         </div>
-        <div class="card-body mb-4">
+        <div class="card-body mb-2">
           <a href="{% url 'comment' image.id %}">
             <div class="card-text">
 
@@ -68,17 +68,19 @@
               
         </div>
 
-        <span class="text-secondary ml-4 viewall"><a href="{% url 'comment' image.id %}">view all {{image.comments.count}} comment{{image.comments.count|pluralize}}</a></span>
-                <div class="allcomments mb-4">
+        <p class="post-time">{{image.date_created|timesince}} ago</p>
+
+        <span class="text-secondary ml-4 viewall"><a href="{% url 'comment' image.id %}" class="main-post-comments">view all {{image.comments.count}} comment{{image.comments.count|pluralize}}</a></span>
+                <div class="comments-date mb-4">
                     {% for comment in image.comments.all|slice:'2' %}
-                    <div class="comment">
+                  <div class="all-comments">
                         <div class="ml-4"><strong>{{comment.user.user.username }}</strong> <span
                                 class="text-secondary">{{ comment.comment }}</span>
                         </div>
                   </div>
                     {% empty %}
                     {% endfor %}
-                    <p class="text-secondary ml-4">{{image.date_created|timesince}}</p>
+                    
                 </div>
 
     </div>
@@ -92,8 +94,12 @@
                 <img class="rounded-circle user-img" src="{{image.user.profile.profile_photo.url}}">
             </div>
             <div class="col-md-6 mt-4 user-detail">
-                <span id="nameof" class=" text-secondary"><a
-                        href="{% url 'profile' user.username %}"><span class="active" >Active:</span> {{ user.username }}</a></span> <br>
+                <span id="nameof" class=" text-secondary">
+                    <a class="side-nav-user" href="{% url 'profile' user.username %}">
+                        <span class="active" >Active:</span> {{ user.username }}
+                    </a>
+                </span> 
+                    <br>
             </div>
         </div>
 
@@ -102,7 +108,8 @@
         <div class="col-md-10">
             <div class="card  mr-2 ml-2">
                 <br>
-                <div class="card-title text-secondary mt-2 mr-2 ml-4 ">Visit other users Accounts</div>
+                <div id="visit-users" class="card-title mt-2 ml-4 ">Visit other users' Accounts</div>
+                <hr>
                 {% for user in users %}
                 <div class="container">
                     <div class="row">
@@ -111,7 +118,7 @@
                                  width="45px" height="45px">
                         </div>
                         <div class="col-md-6 mr-2 mt-2">
-                            <span><a href="{% url 'user_profile' user.username %}">{{user.username}}</a></span>
+                            <span><a class="side-nav-user" href="{% url 'user_profile' user.username %}">{{user.username}}</a></span>
                         </div>
                         <div class="col-md-4">
                         </div>

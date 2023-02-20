@@ -176,14 +176,3 @@ def follow(request, to_follow):
 
 
 
-def like_post(request, id):
-    image = Image.objects.get(id=id)
-    image.likes = image.likes + 1
-    image.save()
-    return redirect(request, 'index')
-
-def single_image_like(request, id):
-    image = Image.objects.get(id=id)
-    image.likes = image.likes + 1
-    image.save()
-    return redirect(request,'farmer') 

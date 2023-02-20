@@ -64,11 +64,20 @@ background: linear-gradient(to right, #734b6d, #42275a); /* W3C, IE 10+/ Edge, F
 
 }
 .active{
+    color: black;
+    font-weight: bold;
+}
+.side-nav-user{
+    text-decoration: none;
     color: green;
     font-weight: bold;
 }
 #visit{
     position: fixed;
+}
+#visit-users{
+    margin-left: 5%;
+    font-weight: bold;
 }
 #nameof{
     text-align: justify;
@@ -123,4 +132,23 @@ a{
 }
 .main-post{
     display: flex;
+}
+.user{
+    text-decoration: none;
+    margin-top: 5%;
+    margin-left: 1%;
+    font-weight: bold;
+}
+.main-post-comments{
+    text-decoration: none;
+    margin-left: 2%;
+    color: green;
+    font-weight: bold;
+}
+.all-comments{
+    margin-left: 2%;
+}
+.post-time{
+    margin-left: 2%;
+    font-weight: bold;
 }

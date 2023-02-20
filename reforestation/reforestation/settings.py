@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'farmers',
     'bootstrap5',
     'cloudinary',
+    'business',
 ]
 
 MIDDLEWARE = [
