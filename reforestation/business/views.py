@@ -28,7 +28,7 @@ def post_create(request):
             return redirect('post_list')
     else:
         form = PostForm()
-    return render(request, 'social/post_create.html', {'form': form})
+    return render(request, 'business/post_create.html', {'form': form})
 
 
 def post_list(request):
@@ -36,7 +36,7 @@ def post_list(request):
     paginator = Paginator(posts, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    return render(request, 'social/post_list.html', {'page_obj': page_obj})
+    return render(request, 'business/post_list.html', {'page_obj': page_obj})
 
 
 def post_detail(request, pk):
@@ -44,7 +44,7 @@ def post_detail(request, pk):
     comments = Comment.objects.filter(post=post).order_by('-created_date')
     comment_form = CommentForm()
     user_likes_post = Like.objects.filter(post=post, user=request.user).exists()
-    return render(request, 'social/post_detail.html', {
+    return render(request, 'business/post_detail.html', {
         'post': post,
         'comments': comments,
         'comment_form': comment_form,
@@ -120,7 +120,7 @@ def profile_edit(request):
             return redirect('profile_detail', username=request.user.username)
     else:
         form = ProfileForm(instance=request.user.profile)
-    return render(request, 'social/profile_edit.html', {'form': form})
+    return render(request, 'business/profile_edit.html', {'form': form})
 
 
 def profile_detail(request, username):
@@ -130,7 +130,7 @@ def profile_detail(request, username):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     user_likes = Like.objects.filter(user=user)
-    return render(request, 'social/profile_detail.html', {
+    return render(request, 'business/profile_detail.html', {
         'user': user,
         'page_obj': page_obj,
         'user_likes': user_likes,
