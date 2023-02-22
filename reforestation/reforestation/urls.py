@@ -23,7 +23,7 @@ urlpatterns = [
     path('', include ('reforest.urls')),
     path('authentication/', include('authentication.urls')),
     path('farmers/', include('farmers.urls')),
-    #  path('business/', include('business.urls')),
+    path('business/', include('business.urls')),
     path('forests/', include('forests.urls')),
     
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
