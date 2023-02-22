@@ -1,0 +1,19 @@
+{% extends 'base_business.html' %}
+{% load static %}
+
+{% load bootstrap5 %}
+
+
+
+
+
+{% block content %}
+
+<h1>Products</h1>
+<ul>
+  {% for product in products %}
+    <li><a href="{% url 'product_detail' product.id %}">{{ product.name }} - {{ product.price }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
