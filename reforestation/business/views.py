@@ -12,11 +12,11 @@ from .models import Product, Order, ShoppingCart
 from .forms import OrderForm
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'business/index.html')
 
 def products(request):
     all_products = Product.objects.all()
-    return render(request, 'products.html', {'products': all_products})
+    return render(request, 'business/products.html', {'products': all_products})
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
@@ -37,12 +37,12 @@ def product_detail(request, product_id):
             return redirect('cart')
     else:
         form = OrderForm()
-    return render(request, 'product_detail.html', {'product': product, 'form': form})
+    return render(request, 'business/product_detail.html', {'product': product, 'form': form})
 
 @login_required
 def cart(request):
     cart, created = ShoppingCart.objects.get_or_create(user=request.user)
-    return render(request, 'cart.html', {'cart': cart})
+    return render(request, 'business/cart.html', {'cart': cart})
 
 @login_required
 def add_to_cart(request, product_id):
@@ -75,11 +75,11 @@ def checkout(request):
     orders = cart.orders.filter(is_ordered=False)
     if request.method == 'POST':
         for order in orders:
-            order.is_ordered = True
+            order.is_ordered = True     
             order.save()
         messages.success(request, "Order placed successfully!")
         cart.orders.clear() # clear the shopping cart after order is placed
         return redirect('products')
     total_cost = cart.get_total_cost()
-    return render(request, 'checkout.html', {'orders': orders, 'total_cost': total_cost})
+    return render(request, 'business/checkout.html', {'orders': orders, 'total_cost': total_cost})
 
