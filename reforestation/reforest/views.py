@@ -11,9 +11,9 @@ def search_reforest(request):
     if request.method == 'POST':
       search_str=json.loads(request.body).get('searchText')
       reforests = Reforest.objects.filter(
-          trees_planted__istartswith=search_str,owner=request.user) | Reforest.objects.filter(
-          date__istartswith=search_str,owner=request.user) | Reforest.objects.filter(
-          description__icontains=search_str,owner=request.user) | Reforest.objects.filter(
+          trees_planted__istartswith=search_str) | Reforest.objects.filter(
+          date__istartswith=search_str) | Reforest.objects.filter(
+          description__icontains=search_str) | Reforest.objects.filter(
           category__icontains=search_str,owner=request.user)
       data = reforests.values()
       return JsonResponse(list(data), safe=False)
