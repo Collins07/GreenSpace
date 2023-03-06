@@ -10,6 +10,16 @@ import json
 
 
 # Create your views here.
+def search_forest(request):
+    if request.method == 'POST':
+      search_str=json.loads(request.body).get('searchText')
+      forest = Forest.objects.filter(
+          trees_planted__istartswith=search_str) | Forest.objects.filter(
+          date__istartswith=search_str) | Forest.objects.filter(
+          description__icontains=search_str)
+      data = forest.values()
+      return JsonResponse(list(data), safe=False)
+
 
 
 @login_required(login_url='/authentication/login')
