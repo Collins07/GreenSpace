@@ -42,8 +42,7 @@
             <thead>
                 <tr>
                    <th>Trees replaced</th>
-                   <th>Name</th>
-                   <th>Reason</th>
+                   <th>Group name</th>
                    <th>Date</th>
                 </tr>
             </thead>
@@ -53,11 +52,10 @@
                 <tr>
                     <td>{{forest.trees_planted}}</td>
                     <td>{{forest.description}}</td>
-                    <td>{{forest.reason}}</td>
                     <td>{{forest.date}}</td>
                     
     
-                    <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
+                    <!-- <td><a id="edit-trees" href="{% url 'forest-edit' forest.id %}" class="btn btn-secondary btn-sm">Edit</a></td> -->
                 </tr>
                 {% endfor %}
             </tbody>
@@ -69,8 +67,7 @@
             <thead>
                 <tr>
                    <th>Trees replanted</th>
-                   <th>Name</th>
-                   <th>Reason</th>
+                   <th>Group name</th>
                    <th>Date</th>
                 </tr>
             </thead>

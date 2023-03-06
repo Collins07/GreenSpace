@@ -46,7 +46,7 @@ def add_forest(request):
             return render(request, 'forests/add_forest.html', context)
         description = request.POST['description']
         date = request.POST['date']
-        reason = request.POST['reason']
+
         
     if request.method == 'POST':
         description = request.POST['description']
@@ -55,7 +55,7 @@ def add_forest(request):
             messages.error(request,' The name of your group is required !!!')
             return render(request, 'forests/add_forest.html', context)
         
-        Forest.objects.create(owner=request.user, trees_planted=trees_planted, description=description, date=date, reason=reason)
+        Forest.objects.create(owner=request.user, trees_planted=trees_planted, description=description, date=date)
         messages.success(request, 'Data saved successfully')
 
         return redirect('forest')
