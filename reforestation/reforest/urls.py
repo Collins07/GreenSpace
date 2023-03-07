@@ -11,6 +11,7 @@ urlpatterns = [
     path('search-reforest' , csrf_exempt(views.search_reforest), name='search_reforest'),
     path('home' ,views.home, name='home'),
     path('reforest_category_summary', views.reforest_category_summary, 
-         name="reforest_category_summary")
+         name="reforest_category_summary"),
+    path ('stats', views.stats, name='stats')     
 
 ]

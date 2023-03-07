@@ -151,4 +151,8 @@ def reforest_category_summary(request):
 
 
 
-    return JsonResponse({"reforest_category_data": finalrep}, safe=False)        
+    return JsonResponse({"reforest_category_data": finalrep}, safe=False)   
+
+
+def stats(request):
+    return render (request, 'reforest/stats.html')
