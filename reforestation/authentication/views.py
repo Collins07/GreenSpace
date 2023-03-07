@@ -17,9 +17,14 @@ from django.conf import settings
 from .utils import account_activation_token
 
 from django.contrib import auth
+import threading
 
 
-# Create your views here.
+# Create your views here
+
+
+
+
 class UsernameValidationView(View):
     def post(self, request):
         data = json.loads(request.body)

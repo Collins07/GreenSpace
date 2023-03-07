@@ -5,6 +5,7 @@ from .models import Category, Reforest
 from django.contrib import messages
 from django.core.paginator import Paginator
 import json
+import datetime
 
 # Create your views here.
 def search_reforest(request):
@@ -122,3 +123,8 @@ def reforest_delete(request,id):
     reforest.delete()
     messages.error(request, 'Your data has been deleted')
     return redirect('index')
+
+def reforest_category_summary(request):
+    todays_date = datetime.date.today()
+    six_months_ago= todays_date - datetime.timedelta(days=180)
+    reforests = Reforest.objects.filter(date__gte=six_months_ago, date_lte=todays_date)
