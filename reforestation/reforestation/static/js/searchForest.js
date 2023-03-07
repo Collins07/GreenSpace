@@ -18,7 +18,7 @@ searchField2.addEventListener("keyup", (e) =>{
     tbody.innerHTML = "";
    
 
-    fetch("/search-forest",{
+    fetch("/forests/search-forest",{
         body: JSON.stringify({searchText: searchValue}),
         method:"POST",
   
