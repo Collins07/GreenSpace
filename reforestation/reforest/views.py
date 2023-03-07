@@ -135,5 +135,19 @@ def reforest_category_summary(request):
     
     category_list= list(set(map(get_category, reforests)))
 
+    def get_reforest_category_trees_planted(category):
+        trees_planted=0
+        filtered_by_category = reforests.filter(category=category)
+
+        for item in filtered_by_category:
+            trees_planted += item.trees_planted
+
+        return trees_planted
+
     for x in reforests:
-        
+        for y in category_list:
+            finalrep[y] = get_reforest_category_trees_planted(y)
+
+
+
+    return JsonResponse({"reforest_category_data": finalrep}, safe=False)        
