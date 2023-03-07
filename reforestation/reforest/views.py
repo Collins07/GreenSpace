@@ -124,6 +124,7 @@ def reforest_delete(request,id):
     messages.error(request, 'Your data has been deleted')
     return redirect('index')
 
+
 def reforest_category_summary(request):
     todays_date = datetime.date.today()
     six_months_ago= todays_date - datetime.timedelta(days=180)

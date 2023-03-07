@@ -10,5 +10,7 @@ urlpatterns = [
     path('delete_trees/<int:id>' ,views.reforest_delete, name='reforest-delete'),
     path('search-reforest' , csrf_exempt(views.search_reforest), name='search_reforest'),
     path('home' ,views.home, name='home'),
+    path('reforest_category_summary', views.reforest_category_summary, 
+         name="reforest_category_summary")
 
 ]
