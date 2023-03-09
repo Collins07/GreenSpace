@@ -1,4 +1,4 @@
-from django.http import Http404, JsonResponse
+from django.http import Http404, JsonResponse, HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required,permission_required
 from .models import Category, Reforest
@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 import json
 import datetime
+import csv
 
 # Create your views here.
 def search_reforest(request):
@@ -156,3 +157,18 @@ def reforest_category_summary(request):
 
 def stats(request):
     return render (request, 'reforest/stats.html')
+
+def export_csv(request):
+    response = HttpResponse(content_type = 'text/csv')
+    response['Content-Disposition']= 'attachment: filename=Reforestation '+ str(datetime.datetime.now())+'.csv'
+
+    writer = csv.writer(response)
+    writer.writerow(['Trees Planted', 'Group Name', 'Category', 'Date'])
+
+    reforest=Reforest.objects.all()
+
+    for tree in reforest:
+        writer.writerow([tree.trees_planted, tree.description,
+                         tree.category,tree.date])
+        
+    return response    
