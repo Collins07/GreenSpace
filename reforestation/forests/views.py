@@ -22,7 +22,7 @@ def search_forest(request):
 
 
 
-@login_required(login_url='/authentication/login')
+
 def forest(request):
     categories = Reason.objects.all()
     forest = Forest.objects.all()
@@ -37,7 +37,7 @@ def forest(request):
     }
     return render(request, 'forests/index.html', context)
 
-@login_required(login_url='/authentication/login')
+
 def add_forest(request):
     reasons = Reason.objects.all()
     context = {
@@ -114,7 +114,7 @@ def forest_edit(request, id):
         return redirect('forest')
 
 
-@login_required(login_url='/authentication/login')
+
 def forest_delete(request,id):
     forest = Forest.objects.get(pk=id)
     forest.delete()

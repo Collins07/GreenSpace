@@ -22,7 +22,7 @@ def search_reforest(request):
       return JsonResponse(list(data), safe=False)
 
 
-@login_required(login_url='/authentication/login')
+
 def index(request):
     categories = Category.objects.all()
     reforest = Reforest.objects.all()
@@ -37,7 +37,7 @@ def index(request):
     }
     return render(request, 'reforest/index.html', context)
 
-@login_required(login_url='/authentication/login')
+
 def add_trees(request):
     categories = Category.objects.all()
     context = {
@@ -76,7 +76,7 @@ def home(request):
 
 
 
-@login_required(login_url='/authentication/login')
+
 def reforest_edit(request, id):
     reforest = Reforest.objects.get(pk=id)
     categories = Category.objects.all()
@@ -119,7 +119,7 @@ def reforest_edit(request, id):
         return redirect('index')
 
 
-@login_required(login_url='/authentication/login')
+
 def reforest_delete(request,id):
     reforest = Reforest.objects.get(pk=id)
     reforest.delete()
