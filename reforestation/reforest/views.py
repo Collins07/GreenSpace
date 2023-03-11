@@ -129,8 +129,8 @@ def reforest_delete(request,id):
 
 def reforest_category_summary(request):
     todays_date = datetime.date.today()
-    six_months_ago= todays_date - datetime.timedelta(days=180)
-    reforests = Reforest.objects.filter(date__gte=six_months_ago, date__lte=todays_date)
+    six_months_ago= todays_date - datetime.timedelta(days=30*6)
+    reforests = Reforest.objects.all()
     finalrep  = {}
 
     def get_category(reforest):
