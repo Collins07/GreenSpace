@@ -31,6 +31,7 @@
 
             <a href="{% url 'export-csv' %}" class="btn btn-outline-success">Export CSV</a>
 
+
             <div class="form-group mb-3 ">
                 <input type="text" id="searchField" class="form-control" placeholder="Search">
             </div>
@@ -59,7 +60,7 @@
                     <td>{{reforest.date}}</td>
                     
     
-                    <td><a id="edit-trees" href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td>
+                    <!-- <td><a id="edit-trees" href="{% url 'reforest-edit' reforest.id %}" class="btn btn-secondary btn-sm">Edit</a></td> -->
                 </tr>
                 {% endfor %}
             </tbody>

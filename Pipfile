@@ -14,6 +14,7 @@ pillow = "*"
 django-bootstrap-v5 = "*"
 cloudinary = "*"
 django-bootstrap5 = "*"
+xlwt = "*"
 
 [dev-packages]
 

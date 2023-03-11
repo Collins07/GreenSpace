@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 import json
 import datetime
 import csv
+import xlwt
 
 # Create your views here.
 def search_reforest(request):
@@ -160,7 +161,7 @@ def stats(request):
 
 def export_csv(request):
     response = HttpResponse(content_type = 'text/csv')
-    response['Content-Disposition']= 'attachment: filename=Reforestation '+ str(datetime.datetime.now())+'.csv'
+    response['Content-Disposition']= 'attachment; filename=Reforestation '+ str(datetime.datetime.now())+'.csv'
 
     writer = csv.writer(response)
     writer.writerow(['Trees Planted', 'Group Name', 'Category', 'Date'])
@@ -171,4 +172,6 @@ def export_csv(request):
         writer.writerow([tree.trees_planted, tree.description,
                          tree.category,tree.date])
         
-    return response    
+    return response 
+
+ 
