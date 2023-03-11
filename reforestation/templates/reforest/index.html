@@ -6,33 +6,35 @@
 {% block content %}
 
 <div class="row mt-4">
-    <div class="col-md-10">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="">Trees</a></li>
-              <li class="breadcrumb-item active" aria-current="page">All trees</li>
-            </ol>
-          </nav>
+    <div class="col-md-12">
+        <p class="summary-intro">
+            Since <span class="greenspace-summary">GreenSpace</span> is focused on accountable and responsible tree planting initiatives by different groups,
+            we provide summary details of the activities of those groups.
+
+            We give updated details on figures, progress and give the citizens a view of the same 
+            by visualizing the progress and be abe to download the summary reports
+        </p>
+
      </div>
     
-     <div class="col-md-2 mb-3">
+     <!-- <div class="col-md-2 mb-3">
         <a id="add-trees" class="btn btn-success" href="{% url 'add_trees' %}">Add Trees</a>
-     </div>
+     </div> -->
 </div>
 
 {% include 'partials/_messages.html' %}
 
-<div class="container">
+<div class="container mt-3">
     {% if reforest.count %}
 
     <div class="row">
-        <div class="col-md-8"></div>
+        <div class="col-md-8">
+            <a href="{% url 'export-csv' %}" class="btn btn-sm btn-outline-success">Export CSV</a>
+        </div>
         <div class="col-md-4">
 
-            <a href="{% url 'export-csv' %}" class="btn btn-outline-success">Export CSV</a>
 
-
-            <div class="form-group mb-3 ">
+            <div id="search-input" class="form-group mb-3 ">
                 <input type="text" id="searchField" class="form-control" placeholder="Search">
             </div>
 
@@ -87,7 +89,7 @@
 
       <div class="row paginator-container">
 
-        <div id="pagination" class="col-md-8">
+        <div id="pagination" class="col-md-8 fw-bold">
             Showing page {{page_obj.number}} of {{page_obj.paginator.num_pages}}
         </div>
 

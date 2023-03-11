@@ -61,3 +61,16 @@
     color: white;
     font-weight: bold;
   }
+
+  .summary-intro{
+    font-size: 17px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  .greenspace-summary{
+    font-size: 20px;
+    font-weight: bold;
+    color: green;
+  }
+  #search-input{
+    box-shadow: rgba(7, 150, 38, 0.842) 0px 2px 8px 0px;
+  }
