@@ -40,14 +40,14 @@
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control   rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+  <input class="form-control   rounded-0 border-0" type="text" placeholder="" aria-label="Search">
   <div class="navbar-nav">
     <div style="width: 200px;" class=" row nav-item text-nowrap ">
-      <div class="px-4 col-md-6">
+      <!-- <div class="px-4 col-md-6">
         {{request.user.username}}
-      </div>
+      </div> -->
 
-      <div class="col-md-6">
+      <div class="col-md-12">
         <form action="{% url 'logout' %}" method="post">
           {% csrf_token %}
           <input id="sign-out" class="text px-3" type="submit" value="Sign Out">

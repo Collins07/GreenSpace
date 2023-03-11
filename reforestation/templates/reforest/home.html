@@ -36,15 +36,15 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle show " id="drop" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Explore</a>
                   <div id="glass" class="dropdown-menu hide" data-popper-placement="bottom-start" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 42px);">
-                    <a class="dropdown-item" href="index.html">Home</a>
+                    
                     <!-- <a class="dropdown-item" href="register.html">Sign Up</a> -->
-                    <a class="dropdown-item" href="login.html">Login</a>
+                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
                     <a class="dropdown-item" href="#">Business Corner</a>
-                    <a class="dropdown-item" href="#">Farmers' Corner</a>
+                    <a class="dropdown-item" href="{% url 'farmer' %}">Farmers' Corner</a>
                     <a class="dropdown-item" href="#">Blogs</a>
                     <div class="dropdown-divider"></div>
                     <h6 id="tree">Tree planting initiative</h6>
-                    <a class="dropdown-item" href="#">Summary Dashboard</a>
+                    <a class="dropdown-item" href="{% url 'reforest' %}">Summary Dashboard</a>
                   </div>
                 </li>
               </ul>
