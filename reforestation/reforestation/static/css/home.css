@@ -290,3 +290,8 @@
   text-decoration-style: 2px solid;
   text-decoration: 2px underline;
 }
+
+/* Routes to roots */
+.root{
+  color: green;
+}

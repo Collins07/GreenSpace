@@ -66,9 +66,9 @@
                 <p >Join us in being accountable for every tree being planted in our quest to combat climate change.
                    Tree planting process is the easiest step in this journey of reforestation but maintainance to see trees through to maturity until
                    we achieve the set forest coverage, is our biggest hurdle. Our focus must shift from <i>" how many trees we plant today "</i> to 
-                   <i>" how many of those trees survive tomorrow "</i>. See our latest updates on forest cover in Kenya, our approach in ensuring we achieve this and how we connect farmers with institutions, companies and organizations that need tree seedlings and maintainance services.</p>
+                   <i>" how many of those trees survive tomorrow "</i>. See our latest updates on tree planting activities in Kenya, our approach in ensuring we achieve this and how we connect farmers with institutions, companies and organizations that need tree seedlings and maintainance services.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                  <button type="button" class="btn btn-success px-4 me-md-2">Summary Report</button>
+                  <a class="btn btn-success px-4 me-md-2" href="{% url 'reforest' %}">Summary Report</a>
                   
                 </div>
                 
@@ -93,6 +93,42 @@
               </div>
             </div>
           </div>
+
+
+          <!-- Roots to Routes -->
+
+          <div class="container " id="hanging-icons">
+            <h2  class="pb-2 border-bottom fw-bold">Routes to <span class="root">Roots</span></h2>
+            <div class="row g-4 py-5">
+
+              <div class="col-6 d-flex align-items-start">
+                <div>
+                  <h3 class="fs-5 fw-bold">Marketing</h3>
+                  <p>GreenSpace as a marketing platform for products that use trees as raw materials, ensures that we are all accountable towards
+                    this long-term sustainable goal of restoration. We are marketing for businesses that sell furnitures, paper, pulp,
+                    wood-based panels, chemicals etc and a <b>commission</b> is charged on the marketing services and the returns are channelled towards
+                    restoring our planet's rich biodiversity through reforestation
+                  </p>
+                  <a href="#" class="btn btn-success">
+                    Buy with Us
+                  </a>
+                </div>
+              </div>
+
+              <div class="col-6 d-flex align-items-start">
+                <div>
+                  <h3 class="fs-5 fw-bold">Partnerships</h3>
+                  <p>By working together with organizations, learning instituitions, companies and industries, we are able to conduct tree planting initiatives through controlled channels 
+                    and in an accountable manner. The different groups will create an account with GreenSpace, record the number of trees they plant and how many of those trees hit maturity. We will oversee their progress on our
+                    summary dashboard from the data provided by all regular updates summed up.
+                  </p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
 
           <div class="container px-4 " id="custom-cards">
             <h2  class="pb-2 border-bottom fw-bold">Approach</h2>    
