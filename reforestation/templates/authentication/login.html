@@ -20,6 +20,8 @@
 
                 <form class="login" action="{% url 'login' %}" method="post">
                     {% csrf_token %}
+
+                    {% include 'partials/_messages.html' %}
                 
                     <div class="login__field">
                         <box-icon class="login_icon" type='solid' name='user'></box-icon>
@@ -33,6 +35,7 @@
 
                     <input type="submit" class="button login__submit" value="Login" />				
                 </form>
+
             </div>
             <div class="screen__background">
                 <span class="screen__background__shape screen__background__shape4"></span>

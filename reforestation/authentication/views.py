@@ -104,7 +104,7 @@ class RegistrationView(View):
            
 
                 email.send(fail_silently=False)
-                messages.success(request, 'Account successfully created')
+                messages.success(request, 'Check your email for account activation link')
                 return render (request, 'authentication/register.html')
 
         return render(request, 'authentication/register.html')
@@ -153,7 +153,7 @@ class LoginView(View):
                 if user.is_active:
                     auth.login(request, user)
                     # messages.success(request, 'Welcome',+ user.username,+ ', you are now logged in')
-                    return redirect ('index')
+                    return redirect ('reforest')
 
                 messages.error(request, 'Account is not active, please check your email')
                 return render(request, 'authentication/login.html')
@@ -166,5 +166,4 @@ class LoginView(View):
 class LogoutView(View):
     def post(self, request):
         auth.logout(request)
-        messages.success(request, 'You have been logged out')
-        return redirect ('login')
+        return redirect ('home')
