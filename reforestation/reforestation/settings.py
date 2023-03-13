@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'reforest',
     'forests',
     'farmers',
+    'affiliate',
     'bootstrap5',
     'cloudinary',
 ]
